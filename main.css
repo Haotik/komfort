@@ -1,0 +1,152 @@
+p {
+    color: black; /* Цвет текста */
+}
+
+body {
+    background-image:url(/images/background_11.jpg);
+    background-repeat:repeat;
+}
+
+.all_in{
+    margin-top: 130px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+.test{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: darkblue;
+    color: aliceblue;
+    border: 1px solid white;
+}
+td {
+    font-size: 14px;
+    text-align: center;
+}
+@media print{
+    #noprint{
+        display:none;
+    }}
+
+.keys{
+    border: 1px solid black;
+}
+
+input[type="radio"]{
+    margin-top:100px;
+    margin-left: 200px;
+    display: none;
+}
+
+input[type="radio"]:checked + label{
+    background-color: blue;
+    color: white;
+}
+
+.label{
+    cursor: pointer;
+    margin-right: 5px;
+    float: left;
+    display: block;
+    color: white;
+    padding: 10px 40px;
+    background-color: darkblue;
+    border-radius: 20px 20px 0 0;
+}
+
+.container, .key_form {
+    height: 80%;
+    width: 100%;
+    position: relative;
+    clear: both;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.key_group1,.key_group2,.key_group3,
+.key_group4 {
+    background-color: white;
+    margin: 10px;
+    width: 100%;
+    height: 97%;
+    display: none;
+}
+
+.items{
+    padding: 5px;
+    width: 10%;
+    height: 100px;
+    margin: 10px;
+    text-align: center;
+}
+
+.key_form_input{
+    width: 80%;
+    margin: 5px 0px;
+    padding-left: 5px;
+}
+
+.key_form_button{
+    border-radius: 10px;
+}
+
+.here{
+    background-color: green;
+}
+
+.away{
+    background-color: red;
+}
+
+
+input[id="tab-1"]:checked ~ .container .key_group1,
+input[id="tab-2"]:checked ~ .container .key_group2,
+input[id="tab-3"]:checked ~ .container .key_group3,
+input[id="tab-4"]:checked ~ .container .key_group4{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.table {
+    background-color: #fff;
+    width: 1200px;
+    height: 80%;
+    overflow-y: auto;
+    margin: 150px auto 0;
+}
+
+.table caption {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.table table{
+    border-collapse: collapse;
+}
+
+.table table tr{
+    text-align: left;
+    height: 20px;
+}
+
+.table table tr td{
+    min-width: 148px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+}
+
+.info {
+    font-weight: bold;
+    font-size: 20px;
+    background-color: white;
+}

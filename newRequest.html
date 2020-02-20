@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+    body {
+    background-image: url(/images/bac.jpg); 
+    background-repeat: no-repeat;
+    background-size: 600px 840px ;
+    }
+       @media print{
+   #noprint{
+       display:none;
+   }}
+  </style>
+    <body>
+    <?php if (!$_POST['flat']) {
+    if ($_COOKIE['flat']){$flat = $_COOKIE['flat'];}
+    else {$flat = 1;}
+} else {$flat = $_POST['flat'];}
+require 'default.php';
+if (!$_POST['house']) {
+    if ($_COOKIE['house']) {$house = $_COOKIE['house'];}
+    } else {$house = $_POST['house'];} 
+$FIO = "_";
+$Phone = "_";
+$FIO = $_POST['FIO'];
+$Phone = $_POST['Phone'];
+    ?>
+    
+        <div id="noprint"><a HREF="/Komfort/zayavki.php" >Назад</a></div>
+        <form action="zayavki.php" method="post" style="position: absolute; padding-left: 50; padding-top: 140;">
+            <div class="first"> <p style="text-align:center; font-size: 20; font-weight: bold;">Данные заявителя</p>
+            <p>Адрес &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select name="house0">
+                <option><?php echo "$house" ?></option>
+                <option>Ленина 59</option>
+		<option>Ленина 59-2</option>
+		<option>Ленина 61</option>
+		<option>Ленина 63</option>
+                <option>Ленина 63-2</option>
+                <option>Ленина 65</option>
+                <option>Ленина 65-2</option>
+                <option>Ленина 65-3</option>
+                <option>Ленина 67</option>
+                <option>Ленина 67-1</option>
+                <option>Ленина 69</option>
+                <option>Ленина 69-2</option>
+                <option>Ленина 69-3</option>
+                <option>Ленина 71</option>
+                <option>Ленина 71-2</option>
+                <option>Ленина 73</option>
+                <option>Ленина 73-2</option>
+                <option>Ленина 75</option>
+                <option>Ленина 77</option>
+                <option>Ленина 77-2</option>
+                <option>Ленина 79</option>
+                <option>Всесвятская 2</option>
+                <option>Всесвятская 4</option>
+                <option>Всесвятская 4-2</option>
+                <option>Всесвятская 4-3</option>
+                <option>Всесвятская 6</option>
+                <option>Всесвятская 8</option>
+                <option>Батова 2</option>
+                <option>Батова 4</option>
+                <option>Батова 6</option>
+                <option>13-й микрорайон</option>
+                </select>    
+                &nbsp &nbsp &nbsp кв &nbsp;<input type="text" name="kv" value = <?php echo "$flat" ?> style="width: 70px">
+            </p>
+            <p>Ф.И.О.: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="FIO" value = "<?php echo "$FIO"?>"></p>
+            <p>Телефон&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="tel" value = "<?php echo "$Phone"?>"></p>
+            <p>Телефон для смс &nbsp;&nbsp;&nbsp;<input type="text" name="SMS"></p>
+        </div>
+        
+            <div class="second"> <p style="text-align:center; font-size: 20; font-weight: bold;"> Данные заявки </p></div>
+        <p>Тип заявки: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select name="type">
+                <option>Плановая</option>
+                <option>Аварийная</option>
+            </select></p>
+        <p>Способ подачи: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select name="chanal">
+                <option>Инвентаризация</option>
+                <option>Телефон</option>
+                <option>Лично</option>
+                <option>Распоряжение</option>
+            </select></p>
+        <p>Отдел: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select name="otdel0"> 
+                <option>Сантехники</option>
+                <option>Электрики</option>
+                <option>Общедомовой</option>
+                <option>КИПиА</option>
+                <option>РКЦ</option>
+                <option>Программист</option>
+            </select></p>
+            <p>Назначеное время:&nbsp; <input type="date" name="date"> с&nbsp;&nbsp; <input type="time" name="timeStart"></p>
+            <p style="padding-left: 280"> &nbsp;по <input type="time" name="timeEnd"></p>
+        <div class="third"> Текст заявки</div>
+        <p> <textarea cols="50" rows="5" name="text"> Акт по воде (инвентаризация)</textarea> </p>
+        <p>Кто принял: <input type="text" name="dispetcher" value="Корехов А.В."></p>
+        <div class="thourth"> <input type="submit" name="newZayvka" value="Принять заявку"></div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <title>Диспетчер комфорт</title>
+  <style>
+   p {
+       color: black; /* Цвет текста */
+       position: relative;
+       top: 86px;
+       left:78px;
+   } 
+   form {
+      background-image:url(images/planshet.png);
+      background-repeat: no-repeat;
+   }
+   body {
+   background-image:url(images/background22.png);
+   background-repeat:repeat;
+   }
+   @media print{
+   #noprint{
+       display:none;
+   }}
+  </style>
+ </head> 
+ <body>
+<?
+    require 'default.php';
+    $onoff = $_POST['off']; 
+    $a = explode("_",$onoff); 
+    $house = $a[0];
+    $flat = $a[1]; 
+    require "houses.php";
+    $FIO = $_POST['FIO'];
+    $b = explode(" ",$FIO);
+           if(count($b) > 3) {
+    $c = explode("  ",$FIO);
+    $b[2] = $c[1];
+        }
+    $FIO2 = $b[0]."<br>".$b[1]." ".$b[2]." ";
+    if(!empty($_POST['dolg'])) {
+    $money = $_POST['dolg']; }
+    else {$money = "-";}
+    
+?>
+
+        <form action="pitanie.php" method="post" style="position: absolute; left: 75px; top: 20px; width: 700px; height:700px;">
+             <p style="position: absolute; left: 65px; top: 65px; font-size:14px; font-weight: bold;"> Отчет о выключении квартиры <br></p>
+            <div class="first">
+                <p> Дата: <? echo $date ?>
+                   <!--<input type="text" name="date" value="<? echo $date ?>" style="margin-left: 25px;">-->
+                </p>
+                <p> Адрес: <? echo $house."   кв:".$flat?>    
+                   <input type="hidden" name="house" value="<? echo $house ?>">
+                   <input type="hidden" name="flat" value="<? echo $flat ?>">
+                   <input type="hidden" name="vkl" value="Выключена">
+                </p>
+                <p> Собственник: <? echo $FIO2 ?>
+                   <input type="hidden" name="FIO" value="<? echo $FIO ?>">
+                </p>
+            </div>
+            
+            <div class="second">
+                <p>Причина: <br>
+                    <textarea cols="22" rows="5" name="coment">Просроченая задолженность</textarea>
+                    <br> в размере: <br>
+                    <input type="text" name="money" value="<? echo $money ?>">
+                    <br> Статус контролера: <br>
+                    <input type="text" name="kontroler" value="-">
+            </div>
+            
+            <div class="third">
+                <p>
+                Исполнитель <select name="worker">
+                <option>КИПиА</option>
+                <option>Электрик</option>    
+                    </select>
+            </div>
+             <p>
+                 Пароль:<br>
+                 <input type="password" name="password" required><br><br>
+                 <input type="submit" name="powerOff" value="Выключить"> &nbsp;&nbsp;
+                 <input type="submit" name="back" value="Вернуться">
+             </p>
+            </form>
+<p id="noprint" style='position:absolute; top:340px; left:330px;'>----------------| оставить пустым если <br>----------------| отключается не из-за долга</p>
+<p id="noprint" style='position:absolute; top:380px; left:330px;'>----------------| оставить пустым если <br>----------------| контролер доступен</p>
+
+    </body>
+</html>
